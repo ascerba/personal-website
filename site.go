@@ -222,6 +222,7 @@ func main() {
 	http.HandleFunc("/about/", aboutHandler)
 	http.HandleFunc("/", rootHandler)
 
-	//go http.ListenAndServe(":8080", http.HandlerFunc(httpsRedirect))
-	log.Fatal(http.ListenAndServe(":4000", nil))
+	go http.ListenAndServe(":80", http.HandlerFunc(httpsRedirect))
+	log.Fatal(http.ListenAndServeTLS(":443", "/etc/letsencrypt/live/alexscerba.com/fullchain.pem", "/etc/letsencrypt/live/alexscerba.com/privkey.pem", nil))
+	//log.Fatal(http.ListenAndServe(":4000", nil)) // for local dev because I'm lazy
 }
