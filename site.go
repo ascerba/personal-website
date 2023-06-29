@@ -8,11 +8,14 @@ import (
 	"os"
 	"path/filepath"
 	"regexp"
+	"sort"
+	"strconv"
 	"strings"
 	"text/template"
 )
 
 type Post struct {
+	Time      int
 	Meta      []byte
 	Thumbnail []byte
 	Content   []byte
@@ -22,48 +25,86 @@ type Posts struct {
 	Contents []*Post
 }
 
-func trimLeftChars(s string, n int) string {
-	m := 0
-	for i := range s {
-		if m >= n {
-			return s[i:]
-		}
-		m++
+func loadPosts(location string, postCount int) (p *Posts, err error) {
+	if postCount == 0 || postCount < -1 {
+		return nil, os.ErrInvalid
 	}
-	return s[:0]
+
+	var tmpPosts []*Post
+
+	if postCount == 1 {
+		tmpPosts = append(tmpPosts, readFile(location+".html"))
+	} else {
+		var depthCount = 0
+
+		// TODO - Use less computationally heavy opperation for scalability
+		err = filepath.Walk(location, func(path string, _ os.FileInfo, _ error) error {
+			var directory, err = regexp.MatchString("^data/(projects|blog)$", path)
+			if err != nil {
+				return err
+			}
+
+			if directory {
+				depthCount++
+			} else if postCount == -1 || depthCount < postCount+1 {
+				tmp := readFile(path)
+				tmpPosts = append(tmpPosts, tmp)
+				depthCount++
+
+			} else {
+				depthCount++
+			}
+
+			return nil
+		})
+
+		if err != nil {
+			return nil, err
+		}
+
+		sort.Slice(tmpPosts, func(i, j int) bool {
+			return tmpPosts[i].Time > tmpPosts[j].Time
+		})
+
+	}
+
+	return &Posts{Contents: tmpPosts}, nil
 }
 
-func loadPost(path string) (p *Posts, err error) {
-
-	var section = 0
-	var tmp *Post = new(Post)
-
-	file, err := os.Open(path + ".html")
+func readFile(location string) (p *Post) {
+	file, err := os.Open(location)
 	if err != nil {
-		file.Close()
-		var tmpPosts []*Post
-		tmpPosts = append(tmpPosts, tmp)
-		return &Posts{Contents: tmpPosts}, err
+		log.Fatal(err)
 	}
 
 	scanner := bufio.NewScanner(file)
+
+	var section = 0
+	var tmp *Post = new(Post)
 
 LineLoop:
 	for scanner.Scan() {
 		var line = scanner.Text()
 		var lineByte = []byte(line + "\n")
 
-		if line == "!@#" {
-			section++
-			goto LineLoop
+		if line == "{{br}}" { // this is not happy with any space or tab characters that follow,
+			section++     // so make sure to check if there's whitespace after a {{br}} if
+			goto LineLoop // there are any errors. I'll fix this later...TM
 		}
 
 		switch section {
 		case 0:
-			tmp.Meta = append(tmp.Meta, lineByte...)
+			time, err := strconv.Atoi(strings.TrimSuffix(string(lineByte), "\n"))
+			if err != nil {
+				log.Fatal(err)
+			} else {
+				tmp.Time = time
+			}
 		case 1:
-			tmp.Thumbnail = append(tmp.Thumbnail, lineByte...)
+			tmp.Meta = append(tmp.Meta, lineByte...)
 		case 2:
+			tmp.Thumbnail = append(tmp.Thumbnail, lineByte...)
+		case 3:
 			tmp.Content = append(tmp.Content, lineByte...)
 		}
 	}
@@ -73,86 +114,7 @@ LineLoop:
 	}
 
 	file.Close()
-
-	if err != nil {
-		return nil, err
-	}
-
-	var tmpPosts []*Post
-	tmpPosts = append(tmpPosts, tmp)
-
-	return &Posts{Contents: tmpPosts}, nil
-}
-
-func loadPosts(location string, postCount int) (p *Posts, err error) {
-	if postCount == 0 || postCount < -1 {
-		return nil, os.ErrInvalid
-	}
-
-	var tmpPosts []*Post
-	var depthCount = 0
-
-	// TODO - Use less computationally heavy opperation for scalability
-	err = filepath.Walk(location, func(path string, _ os.FileInfo, _ error) error {
-		var directory, err = regexp.MatchString("^data/(projects|blog)$", path)
-		if err != nil {
-			return err
-		}
-
-		if directory {
-			depthCount++
-		} else if postCount == -1 || depthCount < postCount+1 {
-			file, err := os.Open(path)
-			if err != nil {
-				log.Fatal(err)
-			}
-
-			scanner := bufio.NewScanner(file)
-
-			var section = 0
-			var tmp *Post = new(Post)
-
-		LineLoop:
-			for scanner.Scan() {
-				var line = scanner.Text()
-				var lineByte = []byte(line + "\n")
-
-				if line == "!@#" {
-					section++
-					goto LineLoop
-				}
-
-				switch section {
-				case 0:
-					tmp.Meta = append(tmp.Meta, lineByte...)
-				case 1:
-					tmp.Thumbnail = append(tmp.Thumbnail, lineByte...)
-				case 2:
-					tmp.Content = append(tmp.Content, lineByte...)
-				}
-			}
-
-			if err := scanner.Err(); err != nil {
-				log.Fatal(err)
-			}
-
-			file.Close()
-
-			tmpPosts = append(tmpPosts, tmp)
-			depthCount++
-
-		} else {
-			depthCount++
-		}
-
-		return nil
-	})
-
-	if err != nil {
-		return nil, err
-	}
-
-	return &Posts{Contents: tmpPosts}, nil
+	return tmp
 }
 
 func renderTemplate(w http.ResponseWriter, tmpl string, p *Posts) {
@@ -203,7 +165,7 @@ func agHandler(w http.ResponseWriter, r *http.Request) {
 		http.NotFound(w, r)
 	}
 
-	renderTemplate(w, trimLeftChars(strings.TrimSuffix(r.URL.Path, "/"), 1), p)
+	renderTemplate(w, strings.TrimPrefix(strings.TrimSuffix(r.URL.Path, "/"), "/"), p)
 }
 
 func postHandler(w http.ResponseWriter, r *http.Request) {
@@ -211,7 +173,7 @@ func postHandler(w http.ResponseWriter, r *http.Request) {
 	if path[2] == "" {
 		agHandler(w, r)
 	} else {
-		p, err := loadPost("data/" + path[1] + "/" + path[2])
+		p, err := loadPosts("data/"+path[1]+"/"+path[2], 1)
 		if p == nil || err != nil {
 			http.NotFound(w, r)
 		} else {
@@ -260,9 +222,6 @@ func main() {
 	http.HandleFunc("/about/", aboutHandler)
 	http.HandleFunc("/", rootHandler)
 
-	go http.ListenAndServe(":80", http.HandlerFunc(httpsRedirect))
-	log.Fatal(http.ListenAndServe(":443", nil))
-
-	//http.Handle("/", http.FileServer(http.Dir("/data/www")))
-	//log.Fatal(http.ListenAndServe(":8080", nil))
+	//go http.ListenAndServe(":8080", http.HandlerFunc(httpsRedirect))
+	log.Fatal(http.ListenAndServe(":4000", nil))
 }
