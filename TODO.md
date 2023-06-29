@@ -3,10 +3,6 @@
 ## site.go
 * Re-implement filesystem.Walk() to sort tree by 'date created'
 * Chop trailing '/' from URL path
-* Simplify loadPosts() / loadPost() functions (lots of shared code)
-
-## about.html
-* Write an 'about'
 
 ## Overall
 * Change misleading and false *.html extension to something custom
