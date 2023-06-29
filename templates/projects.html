@@ -1,0 +1,15 @@
+{{ define "meta"}}
+    <title>Projects</title>
+    <meta name="description" content="Site blog featuring personal and project updates as well as anything random I want to share.">
+{{ end }}
+{{ define "main" }}
+    <h1>Projects</h1>
+    <p class="subtitle">Current posted industrial and automotive design projects.</p>
+    <hr>
+
+{{ range .Contents }}
+{{ printf "%s" .Thumbnail }}
+{{ end }}
+
+    <a href="/projects">Top</a>
+{{ end }}
