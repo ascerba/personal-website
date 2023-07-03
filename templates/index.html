@@ -4,9 +4,12 @@
 {{ end }}
 {{ define "main" }}
     <h1 style="animation: 1s ease-out 0s 1 fadeIn">alexscerba.com</h1>
-
+    <div class="frontpage-subtitle" style="animation: 1s ease-out 0s 1 fadeIn">
+      <p>My place to:</p>
+      <p>showcase design projects.<br> post life updates.<br>bulid web-development skills.</p>
+    </div>
     <section class="bottom">
-      <h2>Featured Projects</h2>
+      <h2>Latest Design Projects</h2>
       <div class="posts">
 {{ range .Contents }}
 {{ printf "%s" .Thumbnail }}
