@@ -3,17 +3,14 @@
     <meta name="description" content="Homepage">
 {{ end }}
 {{ define "main" }}
-    <h1>Alex Scerba</h1>
-    <p class="subtitle">Designer. Maker.</p>
-    <hr>
-    <p>Student at College for Creative Studies in Detroit, MI. Love for tinkering, making, and building.</p>
+    <h1 style="animation: 1s ease-out 0s 1 fadeIn">alexscerba.com</h1>
 
-    <h2>Featured Projects</h2>
-    <hr>
-
+    <section class="bottom">
+      <h2>Featured Projects</h2>
+      <div class="posts">
 {{ range .Contents }}
 {{ printf "%s" .Thumbnail }}
 {{ end }}
-
-    <a href="/projects">See More Projects</a>
+      </div>
+    </section>
 {{ end }}

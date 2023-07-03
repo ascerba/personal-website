@@ -3,13 +3,12 @@
     <meta name="description" content="Site blog featuring personal and project updates as well as anything random I want to share.">
 {{ end }}
 {{ define "main" }}
-    <h1>Blog</h1>
-    <p class="subtitle">Personal and site updates.</p>
-    <hr>
+    <h1>alexscerba.com/blog</h1>
 
+    <section class="postContent">
+      <h2>Entries</h2>
 {{ range .Contents }}
 {{ printf "%s" .Thumbnail }}
 {{ end }}
-
-    <a href="/blog">Top</a>
+    </section>
 {{ end }}

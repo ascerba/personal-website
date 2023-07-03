@@ -14,25 +14,21 @@
 
   <body>
 
-    <nav aria-labelledby="global-navigation" class="nav">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/projects">Projects</a></li>
-        <li><a href="/blog">Blog</a></li>
-        <li><a href="/about">About</a></li>
-      </ul>
+    <input type="checkbox" class="toggler">
+    <div class="hamburger"><div></div></div>
+    <nav aria-labelledby="global-navigation" class="menu">
+      <a href="/">Home</a>
+      <a href="/projects">Projects</a>
+      <a href="/blog">Blog</a>
+      <a href="/about">About</a>
     </nav>
+    <div class="bg-nav-block"></div>
 
     <main>
 
 {{ template "main" . }}
 
     </main>
-
-    <footer>
-      <p>Contact: <a href="mailto:ascerba@collegeforcreativestudies.edu">ascerba@collegeforcreativestudies.edu</a></p>
-    </footer>
-
   </body>
 
 </html>

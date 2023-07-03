@@ -2,5 +2,8 @@
 {{ printf "%s" .Meta }}
 {{ end }}
 {{ define "main" }}
+    <h1>Post</h1>
+    <div class="postContent">
 {{ printf "%s" .Content }}
+    </div>
 {{ end }}
