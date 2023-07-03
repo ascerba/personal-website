@@ -88,6 +88,17 @@ h1 {
   margin-left: 4vw;
 }
 
+.frontpage-subtitle {
+  margin-left: 6vw;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.frontpage-subtitle > p {
+  margin: 10px;
+}
+
 h2 {
   font-weight: lighter;
   margin-bottom: 40px;
@@ -183,7 +194,7 @@ img {
 @media screen and (max-width: 1000px) {
   .bottom {
     position: relative;
-    margin-top: 20vh;
+    margin-top: 13vh;
     max-height: fit-content;
   }
   .postContent {
