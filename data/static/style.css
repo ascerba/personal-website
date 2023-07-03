@@ -64,8 +64,11 @@ main {
 }
 
 a {
-  text-decoration: none;
   color: inherit;
+}
+
+figure > a {
+  text-decoration: none;
 }
 
 @keyframes fadeIn {
