@@ -1,13 +1,13 @@
 @font-face {
   font-family: 'DejaVu Sans';
-  src: url('/static/dejavu-sans-fontfacekit/web fonts/dejavu_regular_macroman/DejaVuSans-webfont.woff') format('woff');
+  src: url('/static/fonts/dejavu-sans-fontfacekit/web fonts/dejavu_regular_macroman/DejaVuSans-webfont.woff') format('woff');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'DejaVu Sans';
-  src: url('/static/dejavu-sans-fontfacekit/web fonts/dejavu_extralight_macroman/DejaVuSans-ExtraLight-webfont.woff') format('woff');
+  src: url('/static/fonts/dejavu-sans-fontfacekit/web fonts/dejavu_extralight_macroman/DejaVuSans-ExtraLight-webfont.woff') format('woff');
   font-weight: lighter;
   font-style: normal;
 }
