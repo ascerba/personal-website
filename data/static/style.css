@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'DejaVu Sans';
+  src: url('/static/dejavu-sans-fontfacekit/web fonts/dejavu_regular_macroman/DejaVuSans-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DejaVu Sans';
+  src: url('/static/dejavu-sans-fontfacekit/web fonts/dejavu_extralight_macroman/DejaVuSans-ExtraLight-webfont.woff') format('woff');
+  font-weight: lighter;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -24,7 +38,7 @@ body {
   background-attachment: fixed;
   background-position: top center;
   background-color: var(--primary-color);
-  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: 'DejaVu Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 .imgGrid {
@@ -51,7 +65,7 @@ nav {
 
 nav a {
   font-size: 28px;
-  font-weight: 100;
+  font-weight: lighter;
   color: var(--accent-color);
   text-decoration: none;
 }
