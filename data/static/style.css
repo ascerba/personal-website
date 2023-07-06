@@ -278,7 +278,7 @@ img {
   .toggler{
   /* ALWAYS KEEPING THE TOGGLER OR THE CHECKBOX ON TOP OF EVERYTHING :  */
     visibility: visible;
-    z-index:3;
+    z-index: 4;
     height: 40px;
     width: 40px;
     position: fixed;
@@ -290,7 +290,7 @@ img {
   }
   
   .hamburger{
-    z-index: 2;
+    z-index: 3;
     position: fixed;
     top: 15px;
     right: 15px;
