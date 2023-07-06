@@ -168,7 +168,7 @@ figure > a {
   text-decoration: none;
 }
 
-a {
+a, a > figcaption {
   color: inherit;
 }
 
