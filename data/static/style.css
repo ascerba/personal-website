@@ -99,14 +99,6 @@ main {
   color: var(--accent-color);
 }
 
-a {
-  color: inherit;
-}
-
-figure > a {
-  text-decoration: none;
-}
-
 @keyframes fadeIn {
   0% {
     opacity: 0%;
@@ -170,6 +162,14 @@ h2 {
 
 figcaption {
   color: var(--subtext-color);
+}
+
+figure > a {
+  text-decoration: none;
+}
+
+a {
+  color: inherit;
 }
 
 .bottom {
