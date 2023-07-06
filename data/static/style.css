@@ -361,23 +361,14 @@ img {
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 40px;
-    right: 25px;
-    z-index: 3;
+    top: 0;
+    right: 0;
+    z-index: 2;
+    background-color: var(--dark-transparent);
+    padding: 70px 20px 20px 20px;
 
   /* HIDDEN INITIALLY  :  */
 
-    visibility: hidden;
-  }
-  .bg-nav-block {
-    display: block;
-    position: fixed;
-    width: 160px;
-    height: 250px;
-    top: 0;
-    right: 0;
-    z-index: 1;
-    background-color: var(--dark-transparent);
     visibility: hidden;
   }
 
