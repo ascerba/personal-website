@@ -292,10 +292,13 @@ img {
   .hamburger{
     z-index: 3;
     position: fixed;
-    top: 15px;
-    right: 15px;
-    height: 40px;
-    width: 40px;
+    top: 0;
+    right: 0;
+    height: 70px;
+    width: 70px;
+    padding: 15px;
+    border-bottom-left-radius: 28px;
+    background-color: var(--dark-transparent);
   
   /* FOR DISPLAYING EVERY ELEMENT IN THE CENTER : */
   
@@ -386,5 +389,8 @@ img {
   .toggler:checked ~ .bg-nav-block {
     visibility: visible;
     animation: fadeIn 0.8s ease;
+  }
+  .toggler:checked ~ .hamburger {
+    background-color: #00000000;
   }
 }
