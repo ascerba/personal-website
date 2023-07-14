@@ -1,11 +1,11 @@
-202206152208
-{{br}}
-    <title>First Post</title>
-    <meta name="description" content="Blog entry">
-{{br}}
-    <p>- <a href="/blog/FirstPost">First Post</a></p>
-{{br}}
-      <h2>First Post</h2>
+{{define "title"}}{{range .Contents}}{{ .Title }}{{end}}{{end}}
+{{define "description"}}First post explaining site modifications{{end}}
+{{define "keywords"}}blog site{{end}}
+
+{{define "main"}}
+    <h1>Blog</h1>
+    <article class="postContent">
+      <h2>{{range .Contents}}{{ .Title }}{{end}}</h2>
       <p>This is my first post on the new site! I am very excited to have the new system set up and mostly functional. There is still plenty of work to be done, but this is a great start.</p>
       <p>I have moved to Golang for all server side scripting and web serving, and it's been a fun language to learn so far. I have had a lot of encouragement from my friend over at <a href="https://www.angel-castaneda.com" target="_blank" rel="noopener noreferrer">www.angel-castaneda.com</a> so go check out his page to see what he is working on.</p>
       <p>The new site structure should be as follows:</p>
@@ -18,3 +18,6 @@
           <li>/about - About me and this website</li>
         </ul>
       <p>I am very excited to start posting again! This site refresh has been long overdue. Feel free to send any errors, typos, or strange behavior to my listed email; there are bound to be some problems at first.</p>
+      <p>Uploaded: <time datetime="2022-06-15">2022-06-15</time></p>
+    </article>
+{{end}}

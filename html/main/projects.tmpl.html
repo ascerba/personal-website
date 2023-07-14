@@ -1,0 +1,19 @@
+{{ define "title" }}Projects{{end}}
+{{ define "description" }}Porfolio projects.{{end}}
+{{ define "keywords" }}projects{{end}}
+
+{{ define "main" }}
+    <h1>alexscerba.com<wbr>/projects</h1>
+
+    <section class="postContent">
+      <h2>Completed</h2>
+{{ range .Contents }}
+        <figure class="thumbnail">
+          <a href="/projects/{{ .FileName }}">
+            {{ .Image }}
+            <figcaption>{{ .Title }}</figcaption>
+          </a>
+        </figure>
+{{ end }}
+    </section>
+{{ end }}

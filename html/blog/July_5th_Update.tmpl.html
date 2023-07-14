@@ -1,11 +1,11 @@
-202207052128
-{{br}}
-    <title>July 5th Update</title>
-    <meta name="description" content="Blog entry">
-{{br}}
-    <p>- <a href="/blog/July5th-Update">July 5th Update</a></p>
-{{br}}
-      <h2>July 5th Update</h2>
+{{define "title"}}{{range .Contents}}{{ .Title }}{{end}}{{end}}
+{{define "description"}}Update on site status, July 5th.{{end}}
+{{define "keywords"}}blog site{{end}}
+
+{{define "main"}}
+    <h1>Blog</h1>
+    <article class="postContent">
+      <h2>{{range .Contents}}{{ .Title }}{{end}}</h2>
       <p>Much progress has been made in the last week, and the site is now pretty usable with its new CSS. There are still some large things to take care of before it can be called "done," and they are the following in no particular order:</p>
       <ul>
         <li>Tile 'Projects' thumbnails so that they look consistent and take advantage of landscape displays.</li>
@@ -20,3 +20,6 @@
           <li>Make thumbnail display more efficient by only reading the thumbnail content section.</li>
         </ul>
       </ul>
+      <p>Uploaded: <time datetime="2022-07-05">2022-07-05</time></p>
+    </article>
+{{end}}

@@ -1,0 +1,14 @@
+{{ define "title" }}Blog{{end}}
+{{ define "description" }}Site blog featuring personal and project updates as well as anything random I want to share.{{end}}
+{{ define "keywords" }}blog{{end}}
+
+{{ define "main" }}
+    <h1>alexscerba.com<wbr>/blog</h1>
+
+    <section class="postContent">
+      <h2>Entries</h2>
+{{ range .Contents }}
+        <p>- <a href="/blog/{{ .FileName }}">{{ .Title }}</a></p>
+{{ end }}
+    </section>
+{{ end }}

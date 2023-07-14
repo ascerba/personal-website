@@ -1,0 +1,20 @@
+{{define "title"}}{{ .Title }}{{end}}
+{{define "description"}}$description${{end}}
+{{define "keywords"}}$tags${{end}}
+
+{{define "main"}}
+<h1>$page$</h1>
+<article class="postContent">
+  <h2>{{ .Title }}</h2>
+  $body$
+  <p>Uploaded: <time datetime="$date$">$date$</time></p>
+  <!--<div class="tags">
+    <h4>tags:</h4>
+    <nav>
+      {{ range .Tags }}
+      <a href="/tags/{{ . }}">{{ . }}</a> <span>·</span>
+      {{ end }}
+    </nav>
+  </div>-->
+</article>
+{{end}}
