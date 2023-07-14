@@ -110,7 +110,7 @@ func (app *application) readFile(location string) (p *Post, err error) {
 	}
 
 	// thumbnail image
-	imagePattern := regexp.MustCompile(`<img class="mainImage" src="(.+)"( alt="(.+)")*>`)
+	imagePattern := regexp.MustCompile(`<img src="(.+)" class="mainImage"( alt="(.+)")* />`)
 	imageMatching := imagePattern.FindStringSubmatch(string(fileContent))
 
 	var image string
