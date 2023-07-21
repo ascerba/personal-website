@@ -27,25 +27,48 @@ sed -i "s;src=\";src=\"/static/media/$post/;" "$posts_dir/$post.tmpl.html"
 sed -i "s;<p><img;<img;" "$posts_dir/$post.tmpl.html"
 sed -i "s;/></p>;/>;" "$posts_dir/$post.tmpl.html"
 
+# Same but for video
+sed -i "s;<p><video;<video;" "$posts_dir/$post.tmpl.html"
+sed -i "s;</video></p>;</video>;" "$posts_dir/$post.tmpl.html"
+
 # makes http & https links have target _blank and rel noopener noreferrer
 perl -i -0pe 's/(<\W*a\W*[^>]*href=)(["'"'"']http[s]?:\/\/[^"'"'"'>]*["'"'"'])([^>]*>)/$1$2 target="_blank" rel="noopener noreferrer"$3/g' "$posts_dir/$post.tmpl.html"
 
-
-echo "Converting and deploying images:"
-mkdir "$base_dir/static/media/$post"
 media_dir="$base_dir/static/media/$post"
-for image in $(ls "$base_dir/md/staged/images")
-do
-  echo "Converting $image and deploying at $media_dir/$image"
-  convert $base_dir/md/staged/images/$image -resize 1280x1280\> $media_dir/$image
-done
-for media in $(ls "$base_dir/md/staged/media")
-do
-  echo "Copying $media to $media_dir/$media"
-  cp $base_dir/md/staged/media/$media $media_dir/$media
-done
 
-echo "Moving to 'deployed' folder"
+if [ -d "$base_dir/md/staged/images" ]
+then
+  echo "Converting and deploying images:"
+  if [ ! -d "$base_dir/static/media/$post" ]
+  then
+    mkdir "$base_dir/static/media/$post"
+  fi
+  for image in $(ls "$base_dir/md/staged/images")
+  do
+    echo "Converting $image and deploying at $media_dir/$image"
+    convert $base_dir/md/staged/images/$image -resize 1000x1000\> "$media_dir/$image"
+    /home/ascerba/.local/bin/cwebp -q 70 "$media_dir/$image" "$media_dir/${image%.*}.webp"
+  done
+fi
+
+if [ -d "$base_dir/md/staged/videos" ]
+then
+  echo "Deploying videos:"
+  if [ ! -d "$base_dir/static/media/$post" ]
+  then
+    mkdir "$base_dir/static/media/$post"
+  fi
+  for video in $(ls "$base_dir/md/staged/videos")
+  do
+    echo "Copying $video to $media_dir/$video"
+    cp $base_dir/md/staged/videos/$video $media_dir/$video
+  done
+fi
+
+#echo "Contents of 'staged' will not be moved or deleted"
+echo "Moving staged contents to 'deployed' folder"
 mv -vT "$base_dir/md/staged" "$base_dir/md/deployed/$post"
 mkdir "$base_dir/md/staged"
+cp "$base_dir/md/template.md" "$base_dir/md/staged/NewPost.md"
 echo "Post deploy complete!"
+echo "Dont forget to edit $post_dir/$post.tmpl.html if any videos were added...!"
