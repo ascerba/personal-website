@@ -26,6 +26,10 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) about(w http.ResponseWriter, r *http.Request) {
+	if r.URL.Path == "/about/" {
+		http.Redirect(w, r, "/about", http.StatusFound)
+		return
+	}
 	err := renderTemplate(w, "main/about", nil)
 	if err != nil {
 		app.serverError(w, err)
@@ -44,8 +48,11 @@ func (app *application) aggregate(w http.ResponseWriter, r *http.Request) {
 
 func (app *application) post(w http.ResponseWriter, r *http.Request) {
 	path := strings.Split(r.URL.Path, "/")
-	if path[2] == "" {
+	if r.URL.Path == "/blog" || r.URL.Path == "/projects" {
 		app.aggregate(w, r)
+	} else if path[2] == "" {
+		http.Redirect(w, r, strings.TrimSuffix(r.URL.Path, "/"), http.StatusFound)
+		return
 	} else {
 		post, err := app.readFile("html" + strings.TrimSuffix(r.URL.Path, "/") + ".tmpl.html")
 		if err != nil {

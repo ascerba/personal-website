@@ -37,8 +37,11 @@ func main() {
 	fs := http.FileServer(http.Dir("./static"))
 	mux.Handle("/static/", http.StripPrefix("/static/", fs))
 
+	mux.HandleFunc("/projects", app.post)
 	mux.HandleFunc("/projects/", app.post)
+	mux.HandleFunc("/blog", app.post)
 	mux.HandleFunc("/blog/", app.post)
+	mux.HandleFunc("/about", app.about)
 	mux.HandleFunc("/about/", app.about)
 	mux.HandleFunc("/", app.home)
 
