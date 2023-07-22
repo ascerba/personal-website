@@ -27,7 +27,7 @@ func (app *application) httpsRedirect(w http.ResponseWriter, req *http.Request) 
 func (app *application) wwwRedirect(h http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		if !strings.HasPrefix(r.Host, "www.") {
-			http.Redirect(w, r, r.URL.Scheme+"://www."+r.Host+r.RequestURI, 302)
+			http.Redirect(w, r, "https://www."+r.Host+r.RequestURI, 302)
 			return
 		}
 
