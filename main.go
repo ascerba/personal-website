@@ -4,6 +4,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 )
 
 type application struct {
@@ -21,6 +22,17 @@ func (app *application) httpsRedirect(w http.ResponseWriter, req *http.Request) 
 	http.Redirect(w, req, target,
 		// see comments below and consider the codes 308, 302, or 301
 		http.StatusMovedPermanently)
+}
+
+func (app *application) wwwRedirect(h http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		if !strings.HasPrefix(r.Host, "www.") {
+			http.Redirect(w, r, r.URL.Scheme+"://www."+r.Host+r.RequestURI, 302)
+			return
+		}
+
+		h.ServeHTTP(w, r)
+	})
 }
 
 func main() {
