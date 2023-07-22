@@ -57,8 +57,10 @@ func main() {
 	mux.HandleFunc("/about/", app.about)
 	mux.HandleFunc("/", app.home)
 
+	www := app.wwwRedirect(mux)
+
 	infoLog.Println("Starting server...")
 	go http.ListenAndServe(":80", http.HandlerFunc(app.httpsRedirect))
-	errorLog.Fatal(http.ListenAndServeTLS(":443", "/etc/letsencrypt/live/alexscerba.com/fullchain.pem", "/etc/letsencrypt/live/alexscerba.com/privkey.pem", mux))
+	errorLog.Fatal(http.ListenAndServeTLS(":443", "/etc/letsencrypt/live/alexscerba.com/fullchain.pem", "/etc/letsencrypt/live/alexscerba.com/privkey.pem", www))
 	//errorLog.Fatal(http.ListenAndServe(":4000", mux)) // for local dev because I'm lazy
 }
