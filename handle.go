@@ -26,8 +26,14 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) about(w http.ResponseWriter, r *http.Request) {
-	if r.URL.Path == "/about/" {
+	path := strings.Split(r.URL.Path, "/")
+	pathLen := len(path)
+
+	if pathLen == 3 && path[2] == "" {
 		http.Redirect(w, r, "/about", http.StatusFound)
+		return
+	} else if pathLen == 3 && path[2] != "" || pathLen > 3 {
+		app.notFound(w)
 		return
 	}
 	err := renderTemplate(w, "main/about", nil)
@@ -48,11 +54,15 @@ func (app *application) aggregate(w http.ResponseWriter, r *http.Request) {
 
 func (app *application) post(w http.ResponseWriter, r *http.Request) {
 	path := strings.Split(r.URL.Path, "/")
-	if r.URL.Path == "/blog" || r.URL.Path == "/projects" {
+	if len(path) > 4 {
+		app.notFound(w)
+	} else if r.URL.Path == "/blog" || r.URL.Path == "/projects" {
 		app.aggregate(w, r)
 	} else if path[2] == "" {
-		http.Redirect(w, r, strings.TrimSuffix(r.URL.Path, "/"), http.StatusFound)
+		http.Redirect(w, r, "/"+path[1], http.StatusFound)
 		return
+	} else if len(path) == 4 && path[3] == "" {
+		http.Redirect(w, r, "/"+path[1]+"/"+path[2], http.StatusFound)
 	} else {
 		post, err := app.readFile("html" + strings.TrimSuffix(r.URL.Path, "/") + ".tmpl.html")
 		if err != nil {
