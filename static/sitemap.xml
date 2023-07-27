@@ -8,33 +8,63 @@
 
 
 <url>
-  <loc>https://alexscerba.com/</loc>
-  <lastmod>2023-06-15T04:44:23+00:00</lastmod>
+  <loc>https://www.alexscerba.com/</loc>
+  <lastmod>2023-07-27T19:23:45+00:00</lastmod>
   <priority>1.00</priority>
 </url>
 <url>
-  <loc>https://alexscerba.com/projects/</loc>
-  <lastmod>2023-06-15T04:44:23+00:00</lastmod>
+  <loc>https://www.alexscerba.com/projects</loc>
+  <lastmod>2023-07-27T19:23:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://alexscerba.com/blog/</loc>
-  <lastmod>2023-06-15T04:44:23+00:00</lastmod>
+  <loc>https://www.alexscerba.com/blog</loc>
+  <lastmod>2023-07-27T19:23:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://alexscerba.com/about/</loc>
-  <lastmod>2023-06-15T04:44:23+00:00</lastmod>
+  <loc>https://www.alexscerba.com/about</loc>
+  <lastmod>2023-07-27T19:23:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://alexscerba.com/projects/CCSEntryPortfolio</loc>
-  <lastmod>2023-06-15T04:44:23+00:00</lastmod>
+  <loc>https://www.alexscerba.com/projects/MCTS_Personal_Transit_Concept</loc>
+  <lastmod>2023-07-27T19:23:45+00:00</lastmod>
   <priority>0.80</priority>
 </url>
 <url>
-  <loc>https://alexscerba.com/blog/FirstPost</loc>
-  <lastmod>2023-06-15T04:44:23+00:00</lastmod>
+  <loc>https://www.alexscerba.com/projects/CCS_Sophomore_Interior</loc>
+  <lastmod>2023-07-27T19:23:45+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.alexscerba.com/projects/CCS_Entry_Portfolio</loc>
+  <lastmod>2023-07-27T19:23:45+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://www.alexscerba.com/blog/MKE_Air_&amp;_Water_Show_-_2023-07-23</loc>
+  <lastmod>2023-07-27T19:23:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.alexscerba.com/blog/Jeep_CJ7_Turn_Signal_Repair</loc>
+  <lastmod>2023-07-27T19:23:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.alexscerba.com/blog/Markdown_To_HTML_Update</loc>
+  <lastmod>2023-07-27T19:23:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.alexscerba.com/blog/July_5th_Update</loc>
+  <lastmod>2023-07-27T19:23:45+00:00</lastmod>
+  <priority>0.64</priority>
+</url>
+<url>
+  <loc>https://www.alexscerba.com/blog/First_Post</loc>
+  <lastmod>2023-07-27T19:23:45+00:00</lastmod>
   <priority>0.64</priority>
 </url>
 
