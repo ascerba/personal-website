@@ -151,14 +151,29 @@ h2 {
   max-height: 40vh;
 }
 
-.postContent {
+.postContent, .projectList {
   background-color: var(--dark-transparent);
   margin: 0 15vw;
   padding: 10px 30px;
 }
 
-.postContent > p {
+.postContent > p, .projectList > p {
   margin-left: 25px;
+}
+
+.projectList figure {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.projectList figure:not(:last-child) {
+  margin-bottom: 50px;
+}
+
+.projectList img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  object-fit: cover;
 }
 
 figcaption {
@@ -184,8 +199,8 @@ a, a > figcaption {
 }
 
 .bottom > .posts > .thumbnail {
-  padding: 10px 10px 30px 10px;
-  margin-bottom: 30px;
+  padding: 10px;
+  margin: auto auto 30px auto;
 }
 
 .bottom > .posts > .thumbnail:hover {
@@ -194,8 +209,8 @@ a, a > figcaption {
 }
 
 .bottom > .posts > .thumbnail img {
-  width: 400px;
-  height: 100%;
+  width: 500px;
+  aspect-ratio: 16/9;
   object-fit: cover;
 }
 
@@ -242,7 +257,7 @@ video {
     margin-top: 13vh;
     max-height: fit-content;
   }
-  .postContent {
+  .postContent, .projectList {
     margin: 0 40px;
   }
   .posts {
@@ -274,7 +289,7 @@ video {
     margin-top: 85px;
     font-size: 36px;
   }
-  .postContent {
+  .postContent, .projectList {
     margin: 100px 0 0 0;
   }
   .posts {
