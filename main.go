@@ -1,10 +1,16 @@
 package main
 
 import (
+	"flag"
 	"log"
 	"net/http"
 	"os"
 	"strings"
+)
+
+var (
+	fullchain = "/etc/letsencrypt/live/alexscerba.com/fullchain.pem"
+	privkey   = "/etc/letsencrypt/live/alexscerba.com/privkey.pem"
 )
 
 type application struct {
@@ -36,6 +42,9 @@ func (app *application) wwwRedirect(h http.Handler) http.Handler {
 }
 
 func main() {
+	addr := flag.String("addr", ":4000", "HTTP Network Address")
+	flag.Parse() // required before flag is used
+
 	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
 	errorLog := log.New(os.Stderr, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
 
@@ -59,8 +68,14 @@ func main() {
 
 	www := app.wwwRedirect(mux)
 
-	infoLog.Println("Starting server...")
-	go http.ListenAndServe(":80", http.HandlerFunc(app.httpsRedirect))
-	errorLog.Fatal(http.ListenAndServeTLS(":443", "/etc/letsencrypt/live/alexscerba.com/fullchain.pem", "/etc/letsencrypt/live/alexscerba.com/privkey.pem", www))
-	//errorLog.Fatal(http.ListenAndServe(":4000", mux)) // for local dev because I'm lazy
+	if *addr == ":443" {
+		infoLog.Printf("Starting TLS server on %s...\n", *addr)
+		go http.ListenAndServe(":80", www)
+		err := http.ListenAndServeTLS(*addr, fullchain, privkey, gzipHandler(www))
+		log.Fatal(err)
+	} else {
+		infoLog.Printf("Starting server on %s...\n", *addr)
+		err := http.ListenAndServe(*addr, gzipHandler(www))
+		log.Fatal(err)
+	}
 }
