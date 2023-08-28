@@ -6,6 +6,8 @@ import (
 )
 
 func (app *application) home(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+
 	path := strings.Split(r.URL.Path, "/")
 	if path[1] != "" {
 		app.notFound(w)
@@ -26,6 +28,8 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) about(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+
 	path := strings.Split(r.URL.Path, "/")
 	pathLen := len(path)
 
@@ -44,6 +48,8 @@ func (app *application) about(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) aggregate(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+
 	p, err := app.loadPosts("html"+strings.TrimSuffix(r.URL.Path, "/"), -1)
 	if err != nil {
 		app.notFound(w)
@@ -53,10 +59,12 @@ func (app *application) aggregate(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) post(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+
 	path := strings.Split(r.URL.Path, "/")
 	if len(path) > 4 {
 		app.notFound(w)
-	} else if r.URL.Path == "/blog" || r.URL.Path == "/projects" {
+	} else if r.URL.Path == "/blog" || r.URL.Path == "/projects" { // Make a more encompasing change here
 		app.aggregate(w, r)
 	} else if path[2] == "" {
 		http.Redirect(w, r, "/"+path[1], http.StatusFound)
