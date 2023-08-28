@@ -1,11 +1,12 @@
-{{define "title"}}{{range .Contents}}{{ .Title }}{{end}}{{end}}
+{{define "title"}}{{.Post.Title}}{{end}}
 {{define "description"}}First post explaining site modifications{{end}}
 {{define "keywords"}}blog site{{end}}
+{{ define "canonical" }}/blog{{end}}
 
 {{define "main"}}
     <h1>Blog</h1>
     <article class="postContent">
-      <h2>{{range .Contents}}{{ .Title }}{{end}}</h2>
+      <h2>{{.Post.Title}}</h2>
       <p>This is my first post on the new site! I am very excited to have the new system set up and mostly functional. There is still plenty of work to be done, but this is a great start.</p>
       <p>I have moved to Golang for all server side scripting and web serving, and it's been a fun language to learn so far. I have had a lot of encouragement from my friend over at <a href="https://www.angel-castaneda.com" target="_blank" rel="noopener noreferrer">www.angel-castaneda.com</a> so go check out his page to see what he is working on.</p>
       <p>The new site structure should be as follows:</p>

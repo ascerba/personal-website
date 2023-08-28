@@ -1,11 +1,12 @@
-{{define "title"}}{{range .Contents}}{{ .Title }}{{end}}{{end}}
+{{define "title"}}{{.Post.Title}}{{end}}
 {{define "description"}}My entry portfolio for the College for Creative Studies.{{end}}
 {{define "keywords"}}project CCS{{end}}
-    
+{{ define "canonical" }}/projects{{end}}
+
 {{define "main"}}
     <h1>Project</h1>
     <article class="postContent">
-      <h2>{{range .Contents}}{{ .Title }}{{end}}</h2>
+      <h2>{{.Post.Title}}</h2>
       <div class="imgGrid">
         <img src="/static/media/Sketch Portfolio early 2021/Arai_Helmet_720p.jpg" alt="Arai helmet sketch." />
         <img src="/static/media/Sketch Portfolio early 2021/Bernie_720p.jpg" alt="Cat, Bernie, sketch." />
