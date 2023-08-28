@@ -1,13 +1,14 @@
 {{ define "title" }}Projects{{end}}
 {{ define "description" }}Porfolio projects.{{end}}
 {{ define "keywords" }}projects{{end}}
+{{ define "canonical" }}/projects{{end}}
 
 {{ define "main" }}
     <h1>alexscerba.com<wbr>/projects</h1>
 
     <section class="projectList">
       <h2>Completed</h2>
-{{ range .Contents }}
+{{ range .Posts.Contents }}
         <figure class="thumbnail">
           <a href="/projects/{{ .FileName }}">
             {{ .Image }}

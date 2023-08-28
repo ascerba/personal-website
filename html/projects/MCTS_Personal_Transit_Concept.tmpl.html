@@ -1,11 +1,12 @@
-{{define "title"}}{{range .Contents}}{{ .Title }}{{end}}{{end}}
+{{define "title"}}{{.Post.Title}}{{end}}
 {{define "description"}}Mobility project centered around Milwaukee, WI.{{end}}
 {{define "keywords"}}project CCS mobility{{end}}
+{{ define "canonical" }}/projects{{end}}
 
 {{define "main"}}
     <h1>Project</h1>
     <article class="postContent">
-      <h2>{{range .Contents}}{{ .Title }}{{end}}</h2>
+      <h2>{{.Post.Title}}</h2>
       <p>This is a project completed at CCS for Design Theory II: Mobility</p>
       <img src="/static/media/DT2Mobility/Intro.jpg" />
       <img src="/static/media/DT2Mobility/City Stats.jpg" />

@@ -1,11 +1,12 @@
-{{define "title"}}{{range .Contents}}{{ .Title }}{{end}}{{end}}
+{{define "title"}}{{.Post.Title}}{{end}}
 {{define "description"}}My entry portfolio for the College for Creative Studies.{{end}}
 {{define "keywords"}}project CCS{{end}}
-    
+{{ define "canonical" }}/projects{{end}}
+
 {{define "main"}}
     <h1>Project</h1>
     <article class="postContent">
-      <h2>CCS Sophomore Interior</h2>
+      <h2>{{.Post.Title}}</h2>
       <p>Honda S-30 project at CCS</p>
       <img src="/static/media/DTR-232-D-Final_Board-Scerba.jpg" class="mainImage" alt="Sophomore interior studio project HONDA S-30." />
       <p>Uploaded: <time datetime="2022-06-17">2022-06-17</time></p>

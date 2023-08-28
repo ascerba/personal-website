@@ -1,11 +1,12 @@
-{{define "title"}}{{range .Contents}}{{ .Title }}{{end}}{{end}}
+{{define "title"}}{{.Post.Title}}{{end}}
 {{define "description"}}Fixing the turn signal on my 1985 Jeep CJ7.{{end}}
 {{define "keywords"}}blog repair cars CJ7{{end}}
+{{ define "canonical" }}/blog{{end}}
 
 {{define "main"}}
 <h1>Blog</h1>
 <article class="postContent">
-  <h2>{{range .Contents}}{{ .Title }}{{end}}</h2>
+  <h2>{{.Post.Title}}</h2>
   <p>A while back, I noticed that the passenger side turn signal on my 1985 Jeep CJ7 was out. The right turn signal indicator would stay solid when the headlights were turned on. I pulled the bulb assembly and found this:</p>
   <img src="/static/media/Jeep_CJ7_Turn_Signal_Repair/Before.webp" alt="Disassembled turn signal lamp assembly: housing, wire harness, contact that broke off wire, degraded rubber grommet, bulb, and lens cover." />
   <p>The wire responsible for turning the bulb “high” was broken from what I assume is fatigue. The rubber meant to support the wire and contact pin was severely degraded and falling apart, exposing the bare wire where it met the pin. This also means the wire could freely flex at the joint, and going over bumbs or just general road vibration could have eventually wore it down. I didn’t see much in the way of corrosion around the wire, so that’s why I assume it was stress related.</p>

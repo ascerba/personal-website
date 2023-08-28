@@ -1,11 +1,12 @@
-{{define "title"}}{{range .Contents}}{{ .Title }}{{end}}{{end}}
+{{define "title"}}{{.Post.Title}}{{end}}
 {{define "description"}}Update on site status, July 5th.{{end}}
 {{define "keywords"}}blog site{{end}}
+{{ define "canonical" }}/blog{{end}}
 
 {{define "main"}}
     <h1>Blog</h1>
     <article class="postContent">
-      <h2>{{range .Contents}}{{ .Title }}{{end}}</h2>
+      <h2>{{.Post.Title}}</h2>
       <p>Much progress has been made in the last week, and the site is now pretty usable with its new CSS. There are still some large things to take care of before it can be called "done," and they are the following in no particular order:</p>
       <ul>
         <li>Tile 'Projects' thumbnails so that they look consistent and take advantage of landscape displays.</li>

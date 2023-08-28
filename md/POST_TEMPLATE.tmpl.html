@@ -1,11 +1,12 @@
-{{define "title"}}{{range .Contents}}{{ .Title }}{{end}}{{end}}
+{{define "title"}}{{.Post.Title}}{{end}}
 {{define "description"}}$description${{end}}
 {{define "keywords"}}$tags${{end}}
+{{ define "canonical" }}$canonical${{end}}
 
 {{define "main"}}
 <h1>$page$</h1>
 <article class="postContent">
-  <h2>{{range .Contents}}{{ .Title }}{{end}}</h2>
+  <h2>{{.Post.Title}}</h2>
   $body$
   <p>Uploaded: <time datetime="$date$">$date$</time></p>
 </article>
