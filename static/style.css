@@ -112,25 +112,37 @@ main {
 }
 
 h1 {
-  margin-top: 8vh;
-  margin-left: 4vw;
+  text-align: center;
   font-size: 45px;
 }
 
 .frontpage-subtitle {
-  margin-left: 6vw;
+  display: flex;
+  justify-content: space-around;
+  margin-top: 45px;
+}
+
+.frontpage-subtitle > .subtitle-text {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
 }
 
-.frontpage-subtitle > p {
-  margin: 10px;
+.frontpage-subtitle > .subtitle-text > p:nth-of-type(2) {
+  margin-left: 20px;
 }
 
 h2 {
   font-weight: lighter;
   margin-bottom: 40px;
+}
+
+blockquote {
+  font-style: italic;
+}
+
+ul {
+  list-style: circle;
 }
 
 @keyframes slideInFromBottom {
@@ -144,6 +156,14 @@ h2 {
   }
 }
 
+.postBackground {
+  background-color: var(--dark-transparent);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
 .posts {
   display: flex;
   flex-direction: row;
@@ -151,14 +171,19 @@ h2 {
   max-height: 40vh;
 }
 
-.postContent, .projectList {
-  background-color: var(--dark-transparent);
-  margin: 0 15vw;
-  padding: 10px 30px;
+.postContent {
+  width: 60em;
+  margin: 0 20px;
 }
 
-.postContent > p, .projectList > p {
-  margin-left: 25px;
+.projectContent {
+  width: 80em;
+  margin: 0 20px;
+}
+
+.projectList {
+  width: 80em;
+  margin: 0 20px;
 }
 
 .projectList figure {
@@ -199,13 +224,11 @@ a, a > figcaption {
 }
 
 .bottom > .posts > .thumbnail {
-  padding: 10px;
   margin: auto auto 30px auto;
 }
 
-.bottom > .posts > .thumbnail:hover {
-  border-radius: 5px;
-  background-color: var(--thumbnail-hover-color);
+.bottom > .posts > .thumbnail:not(:last-child) {
+  margin-right: 20px;
 }
 
 .bottom > .posts > .thumbnail img {
@@ -252,13 +275,13 @@ video {
 }
 
 @media screen and (max-width: 1000px) {
+  .postContent {
+    width: 40em;
+  }
   .bottom {
     position: relative;
-    margin-top: 13vh;
+    margin-top: 100px;
     max-height: fit-content;
-  }
-  .postContent, .projectList {
-    margin: 0 40px;
   }
   .posts {
     padding-left: 100px;
@@ -266,8 +289,8 @@ video {
     flex-direction: column;
     max-height: fit-content;
   }
-  .bottom > .posts > .thumbnail {
-    margin: 15px auto;
+  .bottom > .posts > .thumbnail.thumbnail:not(:last-child) {
+    margin-right: auto;
   }
   .bottom > .posts > .thumbnail img {
     width: fit-content;
@@ -286,11 +309,13 @@ video {
     flex-direction: column;
   }
   h1 {
-    margin-top: 85px;
+    text-align: left;
+    margin: 0 0 0 20px;
     font-size: 36px;
   }
-  .postContent, .projectList {
-    margin: 100px 0 0 0;
+  .frontpage-subtitle {
+    margin-left: 20px;
+    justify-content: unset;
   }
   .posts {
     padding: 0;
@@ -318,8 +343,8 @@ video {
     height: 60px;
     width: 60px;
     padding: 5px;
-    border-bottom-left-radius: 8px;
-    background-color: var(--dark-transparent);
+    /*border-bottom-left-radius: 8px;
+    background-color: var(--dark-transparent);*/
   
   /* FOR DISPLAYING EVERY ELEMENT IN THE CENTER : */
   
@@ -390,7 +415,6 @@ video {
     z-index: 2;
     background-color: var(--dark-transparent);
     padding: 70px 25px 20px 25px;
-    border-bottom-left-radius: 8px;
 
   /* HIDDEN INITIALLY  :  */
 
