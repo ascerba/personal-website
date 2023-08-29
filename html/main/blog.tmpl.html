@@ -4,12 +4,14 @@
 {{ define "canonical" }}/blog{{end}}
 
 {{ define "main" }}
-    <h1>alexscerba.com<wbr>/blog</h1>
+    <h1>Blog</h1>
 
-    <section class="postContent">
-      <h2>Entries</h2>
+    <section class="postBackground">
+      <div class="postContent">
+        <h2>Entries</h2>
 {{ range .Posts.Contents}}
         <p>- <a href="/blog/{{ .FileName }}">{{ .Title }}</a></p>
 {{ end }}
+      </div>
     </section>
 {{ end }}

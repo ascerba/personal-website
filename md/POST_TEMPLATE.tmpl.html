@@ -5,9 +5,11 @@
 
 {{define "main"}}
 <h1>$page$</h1>
-<article class="postContent">
-  <h2>{{.Post.Title}}</h2>
-  $body$
-  <p>Uploaded: <time datetime="$date$">$date$</time></p>
-</article>
+<div class="postBackground">
+  <article class="$type$Content">
+    <h2>{{.Post.Title}}</h2>
+    $body$
+    <p>Uploaded: <time datetime="$date$">$date$</time></p>
+  </article>
+</div>
 {{end}}

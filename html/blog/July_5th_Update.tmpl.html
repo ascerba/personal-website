@@ -5,22 +5,24 @@
 
 {{define "main"}}
     <h1>Blog</h1>
-    <article class="postContent">
-      <h2>{{.Post.Title}}</h2>
-      <p>Much progress has been made in the last week, and the site is now pretty usable with its new CSS. There are still some large things to take care of before it can be called "done," and they are the following in no particular order:</p>
-      <ul>
-        <li>Tile 'Projects' thumbnails so that they look consistent and take advantage of landscape displays.</li>
-        <li>Display 'Project' or 'Blog' (anything) instead of 'Post' when you are viewing a project or blog entry.</li>
-        <li>Create or find a new background image that has more contrast for the white text.</li>
-        <li>Find a better way to display figures in regular content (such as the 'about' page).</li>
-        <li>Change thumbnail image aspect ratio (possibly).</li>
-        <li>Server side scripts and updates:</li>
+    <div class="postBackground">
+      <article class="postContent">
+        <h2>{{.Post.Title}}</h2>
+        <p>Much progress has been made in the last week, and the site is now pretty usable with its new CSS. There are still some large things to take care of before it can be called "done," and they are the following in no particular order:</p>
         <ul>
-          <li>Markdown to HTML shell script via <a href="https://pandoc.org" target="_blank" rel="noopener noreferrer">Pandoc</a>.</li>
-          <li>Implement new file naming and/or directory structure to make searching more efficient.</li>
-          <li>Make thumbnail display more efficient by only reading the thumbnail content section.</li>
+          <li>Tile 'Projects' thumbnails so that they look consistent and take advantage of landscape displays.</li>
+          <li>Display 'Project' or 'Blog' (anything) instead of 'Post' when you are viewing a project or blog entry.</li>
+          <li>Create or find a new background image that has more contrast for the white text.</li>
+          <li>Find a better way to display figures in regular content (such as the 'about' page).</li>
+          <li>Change thumbnail image aspect ratio (possibly).</li>
+          <li>Server side scripts and updates:</li>
+          <ul>
+            <li>Markdown to HTML shell script via <a href="https://pandoc.org" target="_blank" rel="noopener noreferrer">Pandoc</a>.</li>
+            <li>Implement new file naming and/or directory structure to make searching more efficient.</li>
+            <li>Make thumbnail display more efficient by only reading the thumbnail content section.</li>
+          </ul>
         </ul>
-      </ul>
-      <p>Uploaded: <time datetime="2022-07-05">2022-07-05</time></p>
-    </article>
+        <p>Uploaded: <time datetime="2022-07-05">2022-07-05</time></p>
+      </article>
+    </div>
 {{end}}
