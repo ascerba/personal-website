@@ -4,10 +4,11 @@
 {{ define "canonical" }}/projects{{end}}
 
 {{ define "main" }}
-    <h1>alexscerba.com<wbr>/projects</h1>
+    <h1>Projects</h1>
 
-    <section class="projectList">
-      <h2>Completed</h2>
+    <section class="postBackground">
+      <div class="projectList">
+        <h2>Completed</h2>
 {{ range .Posts.Contents }}
         <figure class="thumbnail">
           <a href="/projects/{{ .FileName }}">
@@ -16,5 +17,6 @@
           </a>
         </figure>
 {{ end }}
+      </div>
     </section>
 {{ end }}
