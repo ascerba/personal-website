@@ -1,7 +1,7 @@
 ---
 page: Projects
 title: 2035 Chevrolet Vision SS
-date: 2023-11-05
+date: 2023-11-02
 description: Chevrolet design project set in 2035. Purpose-built EV sports car.
 tags: project exterior Chevrolet CCS sports-car
 cononical: /projects
