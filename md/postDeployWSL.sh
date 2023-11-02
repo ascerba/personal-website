@@ -46,8 +46,8 @@ then
   for image in $(ls "$base_dir/md/staged/images")
   do
     echo "Converting $image and deploying at $media_dir/$image"
-    convert $base_dir/md/staged/images/$image -resize 1000x1000\> "$media_dir/$image"
-    /home/ascerba/.local/bin/cwebp -q 70 "$media_dir/$image" "$media_dir/${image%.*}.webp"
+    convert $base_dir/md/staged/images/$image -resize 1800x1800\> "$media_dir/$image"
+    #/home/ascerba/.local/bin/cwebp -q 70 "$media_dir/$image" "$media_dir/${image%.*}.webp" <------- ignore for now
   done
 fi
 
