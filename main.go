@@ -66,16 +66,16 @@ func main() {
 	mux.HandleFunc("/about/", app.about)
 	mux.HandleFunc("/", app.home)
 
-	www := app.wwwRedirect(mux)
-
 	if *addr == ":443" {
+		www := app.wwwRedirect(mux)
+
 		infoLog.Printf("Starting TLS server on %s...\n", *addr)
 		go http.ListenAndServe(":80", www)
 		err := http.ListenAndServeTLS(*addr, fullchain, privkey, gzipHandler(www))
 		log.Fatal(err)
 	} else {
 		infoLog.Printf("Starting server on %s...\n", *addr)
-		err := http.ListenAndServe(*addr, gzipHandler(www))
+		err := http.ListenAndServe(*addr, gzipHandler(mux))
 		log.Fatal(err)
 	}
 }
