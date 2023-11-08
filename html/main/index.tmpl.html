@@ -3,24 +3,13 @@
 {{ define "keywords" }}home{{end}}
 
 {{ define "main" }}
-    <h1 style="animation: 1s ease-out 0s 1 fadeIn">alexscerba.com</h1>
-    <div class="frontpage-subtitle" style="animation: 1s ease-out 0s 1 fadeIn">
-      <div class="subtitle-text">
-        <p>My place to:</p>
-        <p><strong>showcase design projects.<br>post life updates.<br>bulid web-development skills.</strong></p>
-      </div>
-    </div>
-    <section class="bottom">
-      <h2>Latest Design Projects</h2>
-      <div class="posts">
+      <h1>Design Projects</h1>
+      <section class="projects even-2-col-grid">
 {{ range .Posts.Contents }}
-        <figure class="thumbnail">
-          <a href="/projects/{{ .FileName }}">
-            {{ .Image }}
-            <figcaption>{{ .Title }}</figcaption>
-          </a>
-        </figure>
+        <a href="/projects/{{ .FileName }}" class="thumbnail">
+          {{ .Image }}
+          <p>{{ .Title }}</p>
+        </a>
 {{ end }}
-      </div>
-    </section>
+      </section>
 {{ end }}
