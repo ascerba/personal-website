@@ -1,36 +1,46 @@
 <!DOCTYPE html>
 <html lang="en-US">
-
   <head>
-
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="author" content="Alexander Rees Scerba" />
     <title>{{block "title" .}}Page{{end}} - Alex Scerba</title>
     <meta name="description" content="{{block "description" .}}Alex's personal site{{end}}" />
     <meta name="keywords" content="{{block "keywords" .}}personal site{{end}}">
     <link rel="canonical" href="https://www.alexscerba.com{{block "canonical" .}}{{end}}">
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="/static/style.css" />
+    <link rel="stylesheet" href="/static/style-revised.css" />
     <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon" />
-
   </head>
-
   <body>
-
-    <input type="checkbox" class="toggler">
-    <div class="hamburger"><div></div></div>
-    <nav aria-labelledby="global-navigation" class="menu">
-      <a href="/">Home</a>
-      <a href="/projects">Projects</a>
-      <a href="/blog">Blog</a>
-      <a href="/about">About</a>
-    </nav>
+    <header>
+      <div class="logo-w-name">
+        <img src="/static/logo.svg" alt="Logo" class="logo"/>
+        <span class="name">Alex Scerba</span>
+      </div>
+      <div class="main-nav-position">
+        <input type="checkbox" class="toggler">
+        <div class="hamburger"><div></div></div>
+        <nav aria-labelledby="global-navigation" class="main-nav">
+          <a href="/">Projects</a>
+          <a href="/static/Documents/Resume_Scerba_Fall2023.pdf">Résumé</a>
+          <a href="/about">About</a>
+        </nav>
+      </div>
+    </header>
 
     <main>
 
-{{ template "main" . }}
+        {{ template "main" . }}
 
     </main>
-  </body>
 
+    <footer>
+      <img src="/static/logo.svg" alt="Logo" class="footer-logo"/>
+      <address>
+        <p>Contact: <a href="mailto:alex@alexscerba.com">alex@alexscerba.com</a></p>
+        <p>LinkedIn: <a href="https://linkedin.com/in/ascerba">linkedin.com/in/ascerba</a></p></p>
+      </address>
+    </footer>
+  </body>
 </html>
