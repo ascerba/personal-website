@@ -1,443 +1,292 @@
 @font-face {
-  font-family: 'DejaVu Sans';
-  src: url('/static/fonts/dejavu-sans-fontfacekit/web fonts/dejavusans_regular_macroman/DejaVuSans-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
+    font-family: 'DejaVu Sans';
+    src: url('/static/fonts/dejavu-sans-fontfacekit/web fonts/dejavusans_regular_macroman/DejaVuSans-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'DejaVu Sans';
-  src: url('/static/fonts/dejavu-sans-fontfacekit/web fonts/dejavusans_bold_macroman/DejaVuSans-Bold-webfont.woff') format('woff');
-  font-weight: bold;
-  font-style: normal;
+    font-family: 'DejaVu Sans';
+    src: url('/static/fonts/dejavu-sans-fontfacekit/web fonts/dejavusans_bold_macroman/DejaVuSans-Bold-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
 }
 
 @font-face {
-  font-family: 'DejaVu Sans';
-  src: url('/static/fonts/dejavu-sans-fontfacekit/web fonts/dejavusans_oblique_macroman/DejaVuSans-Oblique-webfont.woff') format('woff');
-  font-weight: normal;
-  font-style: italic;
+    font-family: 'DejaVu Sans';
+    src: url('/static/fonts/dejavu-sans-fontfacekit/web fonts/dejavusans_oblique_macroman/DejaVuSans-Oblique-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
 }
 
 @font-face {
-  font-family: 'DejaVu Sans';
-  src: url('/static/fonts/dejavu-sans-fontfacekit/web fonts/dejavusans_boldoblique_macroman/DejaVuSans-BoldOblique-webfont.woff') format('woff');
-  font-weight: bold;
-  font-style: italic;
+    font-family: 'DejaVu Sans';
+    src: url('/static/fonts/dejavu-sans-fontfacekit/web fonts/dejavusans_boldoblique_macroman/DejaVuSans-BoldOblique-webfont.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
 }
 
 @font-face {
-  font-family: 'DejaVu Sans';
-  src: url('/static/fonts/dejavu-sans-fontfacekit/web fonts/dejavusans_extralight_macroman/DejaVuSans-ExtraLight-webfont.woff') format('woff');
-  font-weight: lighter;
-  font-style: normal;
+    font-family: 'DejaVu Sans';
+    src: url('/static/fonts/dejavu-sans-fontfacekit/web fonts/dejavusans_extralight_macroman/DejaVuSans-ExtraLight-webfont.woff') format('woff');
+    font-weight: lighter;
+    font-style: normal;
 }
 
 * {
-  box-sizing: border-box;
-}
-
-:root {
-  --primary-color: #464646;
-  --accent-color: white;
-  --anchor-hover-color: #bbb49f;
-  --thumbnail-hover-color: #b1b1b140;
-  --dark-transparent: #161616e3;
-  --subtext-color: rgb(139, 139, 139);
+    box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
 }
 
 body {
-  margin: 0;
-  /* background-image: url("/static/media/MKE_Skyline_Art_Museum_2K.webp"); */
-  /* background-image: url("/static/media/Leaves.jpg"); */
-  background-image: url("/static/grid.png");
-/*   background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: top center; */
-  background-color: rgb(73, 119, 96); /*101,133,117*/
-  font-family: 'DejaVu Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-.imgGrid {
-  margin: 20px auto;
-  line-height: 0;
-  column-count: 2;
-  column-gap: 0px;
-}
-
-.imgGrid img {
-  width: 100% !important;
-  height: auto !important;
-}
-
-nav {
-  max-width: 100%;
-  text-align: center;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
-
-nav a {
-  font-size: 18px;
-  color: var(--accent-color);
-  text-decoration: none;
-}
-
-nav a:hover {
-  text-decoration: underline;
+    margin: 0;
+    font-family: 'DejaVu Sans', 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
 
 main {
-  color: var(--accent-color);
+    padding: 1rem;
+    padding-top: 5rem;
+    padding-bottom: 3rem;
+    max-width: 85rem;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-@keyframes fadeIn {
-  0% {
-    opacity: 0%;
-  }
-  8% {
-    opacity: 0%;
-  }
-  100% {
-    opacity: 100%;
-  }
+header {
+    position: fixed;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    background-color: white;
+}
+
+.logo-w-name {
+    display: flex;
+}
+
+.logo {
+    padding-left: .75rem;
+    padding-right: .75rem;
+    height: 3rem;
+    filter: invert(70%)
+}
+
+.name {
+    font-size: 2rem;
+    font-weight: bold;
+    margin: auto 1rem;
+    color: rgb(100, 100, 100)
 }
 
 h1 {
-  text-align: center;
-  font-size: 45px;
-}
-
-.frontpage-subtitle {
-  display: flex;
-  justify-content: space-around;
-  margin-top: 45px;
-}
-
-.frontpage-subtitle > .subtitle-text {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-
-.frontpage-subtitle > .subtitle-text > p:nth-of-type(2) {
-  margin-left: 20px;
-}
-
-h2 {
   font-weight: lighter;
-  margin-bottom: 40px;
 }
 
-blockquote {
-  font-style: italic;
+.main-nav-position {
+    display: flex;
+    justify-content: right;
+    flex-grow: 1;
+    padding-right: 2rem;
+    border-right: .5rem solid rgb(196, 196, 196);
 }
 
-ul {
-  list-style: circle;
+.main-nav {
+    display: flex;
+    gap: 2rem;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
 
-@keyframes slideInFromBottom {
-  0% {
-    transform: translateY(100%);
-    opacity: 20%;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 100%;
-  }
+.toggler, .hamburger {
+    display: none;
 }
 
-.postBackground {
-  background-color: var(--dark-transparent);
-  padding-top: 10px;
-  padding-bottom: 10px;
-  display: flex;
-  justify-content: space-around;
-}
-
-.posts {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  max-height: 40vh;
-}
-
-.postContent {
-  width: 60em;
-  margin: 0 20px;
-}
-
-.projectContent {
-  width: 80em;
-  margin: 0 20px;
-}
-
-.projectList {
-  width: 80em;
-  margin: 0 20px;
-}
-
-.projectList figure {
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.projectList figure:not(:last-child) {
-  margin-bottom: 50px;
-}
-
-.projectList img {
-  width: 100%;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-}
-
-figcaption {
-  color: var(--subtext-color);
-}
-
-figure > a {
-  text-decoration: none;
-}
-
-a, a > figcaption {
-  color: inherit;
-}
-
-.bottom {
-  width: 100%;
-  background-color: var(--dark-transparent);
-  padding: 10px 20px;
-  position: fixed;
-  bottom: 0;
-  max-height: 50vh;
-  animation: 0.6s ease-out 0s 1 slideInFromBottom;
-}
-
-.bottom > .posts > .thumbnail {
-  margin: auto auto 30px auto;
-}
-
-.bottom > .posts > .thumbnail:not(:last-child) {
-  margin-right: 20px;
-}
-
-.bottom > .posts > .thumbnail img {
-  width: 500px;
-  aspect-ratio: 16/9;
-  object-fit: cover;
-}
-
-.f, .f * {
-  position:fixed;
-  max-width:100%;
-  max-height:100%;
-  top:50%;
-  left:50%;
-}
-
-.f * {
-  transform:translate(-50%,-50%);
-}
-
-.f {
-  display:none;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:var(--dark-transparent);
-}
-
-*:focus+.f {
-  display:block;
+.even-2-col-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
 }
 
 img {
-  max-width:100%;
+    max-width: 100%;
 }
 
-video {
-  max-width: 100%;
-}
-
-.toggler {
-  visibility: hidden;
-}
-
-@media screen and (max-width: 1000px) {
-  .postContent {
-    width: 40em;
-  }
-  .bottom {
-    position: relative;
-    margin-top: 100px;
-    max-height: fit-content;
-  }
-  .posts {
-    padding-left: 100px;
-    padding-right: 100px;
-    flex-direction: column;
-    max-height: fit-content;
-  }
-  .bottom > .posts > .thumbnail.thumbnail:not(:last-child) {
-    margin-right: auto;
-  }
-  .bottom > .posts > .thumbnail img {
+.thumbnail img {
     width: fit-content;
-  }
+    aspect-ratio: 16/9;
+    object-fit: cover;
 }
 
-@media screen and (max-width: 700px) {
-  span {
-    display: inline-block;
-  }
-  nav {
-    display: none;
-  }
-  span:hover~nav {
-    display: flex;
-    flex-direction: column;
-  }
-  h1 {
-    text-align: left;
-    margin: 0 0 0 20px;
-    font-size: 36px;
-  }
-  .frontpage-subtitle {
-    margin-left: 20px;
-    justify-content: unset;
-  }
-  .posts {
-    padding: 0;
-  }
+a {
+    text-decoration: none;
+    color: black;
+}
 
-  .toggler{
-  /* ALWAYS KEEPING THE TOGGLER OR THE CHECKBOX ON TOP OF EVERYTHING :  */
-    visibility: visible;
-    z-index: 4;
-    height: 60px;
-    width: 60px;
-    position: fixed;
-    top: 0;
-    right: 0;
-    cursor: pointer;
-    opacity: 0;
-    margin: 0;
-  }
-  
-  .hamburger{
-    z-index: 3;
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 60px;
-    width: 60px;
-    padding: 5px;
-    /*border-bottom-left-radius: 8px;
-    background-color: var(--dark-transparent);*/
-  
-  /* FOR DISPLAYING EVERY ELEMENT IN THE CENTER : */
-  
+.footer-logo {
+    filter: invert(100%);
+    height: 2rem;
+    margin-left: .75rem;
+}
+
+footer {
     display: flex;
+    background-color: black;
+    padding: 1rem;
+    gap: 1rem;
     align-items: center;
-    justify-content: center;
-  }
-  
-  /* CREATING THE MIDDLE LINE OF THE HAMBURGER : */
-  
-  .hamburger > div{
-    position: relative;
-    top: 0;
-    right: 0;
-    background: var(--accent-color);
-    height: 2px;
-    width: 60%;
-    transition: all  0.4s ease;
-  }
-  
-  /* CREATING THE TOP AND BOTTOM LINES : 
-  TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
-  
-  .hamburger > div::before,
-  .hamburger > div::after{
-    content: '';
-    position: absolute;
-    top: -10px;
-    background: var(--accent-color);
-    width: 100%;
-    height: 2px;
-    transition: all  0.4s ease;
-  }
-  
-  .hamburger > div::after{
-    top: 10px;
-  }
-  
-  /* IF THE TOGGLER IS IN ITS CHECKED STATE, THEN SETTING THE BACKGROUND OF THE MIDDLE LAYER TO COMPLETE BLACK AND OPAQUE :  */
-  
-  .toggler:checked + .hamburger > div{
-    background: rgba(0,0,0,0); /*Not bothering with var because one-off*/
-  }
-  
-  .toggler:checked + .hamburger > div::before{
-    top: 0;
-    transform: rotate(-45deg);
-  }
-  
-  /* AND ROTATING THE TOP AND BOTTOM LINES :  */
-  
-  .toggler:checked + .hamburger > div::after{
-    top: 0;
-    transform: rotate(45deg);
-  }
+}
 
-  /* MAIN MENU WITH THE WHITE BACKGROUND AND THE TEXT :  */
+address {
+    padding-left: 1rem;
+    gap: 2rem;
+}
 
-  .menu {
+footer * {
+    color: white;
+}
 
-  /* APPLYING TRANSITION TO THE MENU :  */
-
+@media screen and (min-width: 45rem) {
+  address {
     display: flex;
-    flex-direction: column;
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 2;
-    background-color: var(--dark-transparent);
-    padding: 70px 25px 20px 25px;
-
-  /* HIDDEN INITIALLY  :  */
-
-    visibility: hidden;
-  }
-
-  .menu > a {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    font-size: 34px;
-  }
-
-  /* IF THE TOGGLER IS CHECKED, THEN INCREASE THE WIDTH OF THE MENU TO 30% , CREATING A SMOOTH EFFECT :  */
-
-  .toggler:checked ~ .menu{
-    visibility: visible;
-    animation: fadeIn 0.8s ease;
-  }
-  .toggler:checked ~ .bg-nav-block {
-    visibility: visible;
-    animation: fadeIn 0.8s ease;
-  }
-  .toggler:checked ~ .hamburger {
-    background-color: #00000000;
   }
 }
+
+@media screen and (max-width: 45rem) {
+    nav {
+      display: none;
+    }
+
+    header {
+        width: 100%;
+    }
+
+    .even-2-col-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .toggler{
+    /* ALWAYS KEEPING THE TOGGLER OR THE CHECKBOX ON TOP OF EVERYTHING :  */
+      visibility: visible;
+      display: block;
+      z-index: 4;
+      height: 60px;
+      width: 60px;
+      position: fixed;
+      top: .75rem;
+      right: 1rem;
+      cursor: pointer;
+      opacity: 0;
+      margin: 0;
+    }
+    
+    .hamburger{
+      z-index: 3;
+      position: fixed;
+      top: .75rem;
+      right: 1rem;
+      height: 60px;
+      width: 60px;
+      padding: 5px;
+      /*border-bottom-left-radius: 8px;
+      background-color: var(--dark-transparent);*/
+    
+    /* FOR DISPLAYING EVERY ELEMENT IN THE CENTER : */
+    
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    /* CREATING THE MIDDLE LINE OF THE HAMBURGER : */
+    
+    .hamburger > div{
+      position: relative;
+      top: 0;
+      right: 0;
+      background: black;
+      height: 2px;
+      width: 60%;
+      transition: all  0.4s ease;
+    }
+    
+    /* CREATING THE TOP AND BOTTOM LINES : 
+    TOP AT -10PX ABOVE THE MIDDLE ONE AND BOTTOM ONE IS 10PX BELOW THE MIDDLE: */
+    
+    .hamburger > div::before,
+    .hamburger > div::after{
+      content: '';
+      position: absolute;
+      top: -10px;
+      background: black;
+      width: 100%;
+      height: 2px;
+      transition: all  0.4s ease;
+    }
+    
+    .hamburger > div::after{
+      top: 10px;
+    }
+    
+    /* IF THE TOGGLER IS IN ITS CHECKED STATE, THEN SETTING THE BACKGROUND OF THE MIDDLE LAYER TO COMPLETE BLACK AND OPAQUE :  */
+    
+    .toggler:checked + .hamburger > div{
+      background: rgba(0,0,0,0); /*Not bothering with var because one-off*/
+    }
+    
+    .toggler:checked + .hamburger > div::before{
+      top: 0;
+      transform: rotate(-45deg);
+    }
+    
+    /* AND ROTATING THE TOP AND BOTTOM LINES :  */
+    
+    .toggler:checked + .hamburger > div::after{
+      top: 0;
+      transform: rotate(45deg);
+    }
+  
+    /* MAIN MENU WITH THE WHITE BACKGROUND AND THE TEXT :  */
+  
+    .main-nav {
+  
+    /* APPLYING TRANSITION TO THE MENU :  */
+  
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      top: 0;
+      right: 0;
+      z-index: 2;
+      background-color: white;
+      padding: 6rem 2rem 1rem 2rem;
+      align-items: center;
+  
+    /* HIDDEN INITIALLY  :  */
+  
+      visibility: hidden;
+    }
+  
+    .main-nav > a {
+      margin-top: 15px;
+      margin-bottom: 15px;
+      font-size: 34px;
+    }
+  
+    /* IF THE TOGGLER IS CHECKED, THEN INCREASE THE WIDTH OF THE MENU TO 30% , CREATING A SMOOTH EFFECT :  */
+  
+    .toggler:checked ~ .main-nav{
+      visibility: visible;
+      animation: fadeIn 0.8s ease;
+    }
+    .toggler:checked ~ .bg-nav-block {
+      visibility: visible;
+      animation: fadeIn 0.8s ease;
+    }
+    .toggler:checked ~ .hamburger {
+      background-color: #00000000;
+    }
+  }
