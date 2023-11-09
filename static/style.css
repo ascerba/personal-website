@@ -83,7 +83,8 @@ header {
 }
 
 h1 {
-  font-weight: lighter;
+  font-size: 1.5rem;
+  color: rgb(190, 190, 190);
 }
 
 .main-nav-position {
@@ -128,14 +129,15 @@ a {
 
 .footer-logo {
     filter: invert(100%);
-    height: 2rem;
+    height: 1rem;
     margin-left: .75rem;
 }
 
 footer {
     display: flex;
     background-color: black;
-    padding: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     gap: 1rem;
     align-items: center;
 }
@@ -143,6 +145,7 @@ footer {
 address {
     padding-left: 1rem;
     gap: 2rem;
+    font-size: .7rem;
 }
 
 footer * {
@@ -158,6 +161,9 @@ footer * {
 @media screen and (max-width: 45rem) {
     nav {
       display: none;
+    }
+    .footer-logo {
+      height: 1.5rem;
     }
 
     header {
@@ -289,4 +295,22 @@ footer * {
     .toggler:checked ~ .hamburger {
       background-color: #00000000;
     }
+}
+
+@media screen and (max-width: 27rem) {
+  .logo {
+    height: 10vw;
   }
+  .name {
+    font-size: 6.5vw;
+  }
+  .address {
+    font-size: .5rem;
+  }
+  .toggler{
+    top: .4rem;
+  }
+  .hamburger{
+    top: .4rem;
+  }
+}
