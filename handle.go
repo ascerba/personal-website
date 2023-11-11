@@ -13,7 +13,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 		app.notFound(w)
 		return
 	} else {
-		p, err := app.loadPosts("html/projects", 3)
+		p, err := app.loadPosts("html/projects", -1)
 		if err != nil {
 			app.serverError(w, err)
 			return
