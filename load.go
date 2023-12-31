@@ -88,7 +88,7 @@ func (app *application) readFile(location string) (p *Post, err error) {
 	title := strings.ReplaceAll(fileName, "_", " ")
 
 	// date
-	datePattern := regexp.MustCompile(`<time datetime="(\d{4}-\d{2}-\d{2})">`)
+	datePattern := regexp.MustCompile(`{{define "uploaded-on"}}(\d{4}-\d{2}-\d{2}){{end}}`)
 	dateMatching := datePattern.FindStringSubmatch(string(fileContent))
 
 	var date string
