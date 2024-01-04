@@ -64,7 +64,7 @@ func (app *application) post(w http.ResponseWriter, r *http.Request) {
 	path := strings.Split(r.URL.Path, "/")
 	if len(path) > 4 {
 		app.notFound(w)
-	} else if r.URL.Path == "/blog" || r.URL.Path == "/projects" { // Make a more encompasing change here
+	} else if r.URL.Path == "/projects" {
 		app.aggregate(w, r)
 	} else if path[2] == "" {
 		http.Redirect(w, r, "/"+path[1], http.StatusFound)
