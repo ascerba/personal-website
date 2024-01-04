@@ -60,8 +60,6 @@ func main() {
 
 	mux.HandleFunc("/projects", app.post)
 	mux.HandleFunc("/projects/", app.post)
-	mux.HandleFunc("/blog", app.post)
-	mux.HandleFunc("/blog/", app.post)
 	mux.HandleFunc("/about", app.about)
 	mux.HandleFunc("/about/", app.about)
 	mux.HandleFunc("/", app.home)
