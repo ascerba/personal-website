@@ -7,7 +7,9 @@
       <section class="projects even-2-col-grid">
 {{ range .Posts.Contents }}
         <a href="/projects/{{ .FileName }}" class="thumbnail">
-          {{ .Image }}
+          <div class="img-zoom">
+            {{ .Image }}
+          </div>
           <p>{{ .Title }}</p>
         </a>
 {{ end }}

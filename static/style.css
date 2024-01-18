@@ -71,12 +71,11 @@ header {
 .logo {
     padding-left: .75rem;
     padding-right: .75rem;
-    height: 3rem;
+    height: 1.5rem;
     filter: invert(70%)
 }
 
 .name {
-    font-size: 2rem;
     font-weight: bold;
     margin: auto 1rem;
     color: rgb(100, 100, 100)
@@ -107,6 +106,7 @@ b {
     gap: 2rem;
     padding-top: .5rem;
     padding-bottom: .5rem;
+    font-size: .8rem;
 }
 
 .toggler, .hamburger {
@@ -123,22 +123,41 @@ img {
     max-width: 100%;
 }
 
-.thumbnail img {
-    width: fit-content;
-    aspect-ratio: 16/9;
-    object-fit: cover;
+.img-zoom {
+  overflow: hidden;
+}
+
+.img-zoom img {
+  width: fit-content;
+  aspect-ratio: 16/9;
+  object-fit: cover;
+  display: block;
+  position: relative;
+  z-index: -1;
+
+  filter: grayscale(1);
+  transition: all .3s ease-in-out;
+}
+
+.thumbnail:hover img {
+  filter: grayscale(0);
+  transform: scale(1.05);
 }
 
 a {
-    color: black;
+  color: black;
 }
 
 header a, .projects a {
   text-decoration: none;
 }
 
+a:hover:not(.thumbnail) {
+  opacity: 60%;
+}
+
 .projects p {
-  margin-top: 0.2rem;
+  margin-top: 0.5rem;
   border-right: .5rem solid rgb(196, 196, 196);
   border-top: .12rem solid rgb(196, 196, 196);
 }
@@ -206,7 +225,7 @@ blockquote {
       height: 60px;
       width: 60px;
       position: fixed;
-      top: .75rem;
+      top: 0;
       right: 1rem;
       cursor: pointer;
       opacity: 0;
@@ -216,7 +235,7 @@ blockquote {
     .hamburger{
       z-index: 3;
       position: fixed;
-      top: .75rem;
+      top: 0;
       right: 1rem;
       height: 60px;
       width: 60px;
@@ -303,7 +322,7 @@ blockquote {
     .main-nav > a {
       margin-top: 15px;
       margin-bottom: 15px;
-      font-size: 34px;
+      font-size: 2rem;
     }
   
     /* IF THE TOGGLER IS CHECKED, THEN INCREASE THE WIDTH OF THE MENU TO 30% , CREATING A SMOOTH EFFECT :  */
@@ -322,12 +341,12 @@ blockquote {
 }
 
 @media screen and (max-width: 27rem) {
-  .logo {
-    height: 10vw;
+/*   .logo {
+    height: 5vw;
   }
   .name {
-    font-size: 6.5vw;
-  }
+    font-size: 3vw;
+  } */
   .address {
     font-size: .5rem;
   }
