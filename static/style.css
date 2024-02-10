@@ -48,7 +48,7 @@ body {
 
 main {
     padding: 1rem;
-    padding-top: 4rem;
+    padding-top: 7rem;
     padding-bottom: 3rem;
     max-width: 85rem;
     margin-left: auto;
@@ -62,6 +62,7 @@ header {
     align-items: center;
     padding: 1rem;
     background-color: white;
+    border-bottom: 0.1rem solid black;
 }
 
 .logo-w-name {
@@ -82,11 +83,12 @@ header {
 }
 
 h1 {
+  display: none;
   font-size: 2.5rem;
-  color: rgb(190, 190, 190);
-  padding-left: 1rem;
-  border-left: 1rem solid rgb(59, 195, 219);
-  border-bottom: .12rem solid rgb(196, 196, 196);
+  color: rgb(143, 143, 143);
+  /* padding-left: 1rem; */
+  /* border-left: 1rem solid rgb(59, 195, 219); */
+  /* border-bottom: .12rem solid rgb(196, 196, 196); */
 }
 
 b {
@@ -116,32 +118,65 @@ b {
 .even-2-col-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+}
+
+.uneven-column {
+	display: flex;
+	gap: 4rem;
+}
+
+.uneven-column-grid {
+  display: grid;
+  gap: 3rem;
+  grid-template-columns: 25rem 1fr;
+}
+
+.side-info {
+	min-width: 20rem;
+	max-width: 30%;
+	/*background-color: rgb(240,240,240);*/
 }
 
 img {
     max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+    font-style: italic;
+    shape-margin: 1rem;
 }
 
-.img-zoom {
-  overflow: hidden;
-}
-
-.img-zoom img {
+.thumbnail img {
   width: fit-content;
-  aspect-ratio: 16/9;
+  aspect-ratio: 4/3;
   object-fit: cover;
   display: block;
   position: relative;
   z-index: -1;
-
-  filter: grayscale(1);
-  transition: all .3s ease-in-out;
 }
 
-.thumbnail:hover img {
-  filter: grayscale(0);
-  transform: scale(1.05);
+.thumbnail {
+	position: relative;
+}
+
+.title {
+  z-index: -1;
+  opacity: 0;
+  display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 8rem 1rem;
+	text-align: center;
+	font-weight: bold;
+	color: white;
+	background-color: rgba(27, 27, 27, 0.726);
+	min-width: 100%;
+	min-height: 100%;
+  transition: all 0.3s ease-in-out;
+}
+
+.thumbnail:hover .title {
+	opacity: 100%;
 }
 
 a {
@@ -199,6 +234,34 @@ blockquote {
   display: none;
 }
 
+.back-button {
+  background-color: orange;
+}
+
+@media screen and (max-width: 82rem) {
+  main {
+    margin-left: 5rem;
+    margin-right: 5rem;
+  }
+	.uneven-column {
+		flex-direction: column-reverse;
+	}
+	.side-info {
+		max-width: 100%;
+	}
+  .side-info img {
+    display: block;
+    margin: auto;
+  }
+}
+
+@media screen and (max-width: 70rem) {
+  main {
+    margin-left: 1rem;
+    margin-right: 1rem;
+  }
+}
+
 @media screen and (min-width: 45rem) {
   address {
     display: flex;
@@ -206,6 +269,10 @@ blockquote {
 }
 
 @media screen and (max-width: 45rem) {
+    main {
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
     nav {
       display: none;
     }

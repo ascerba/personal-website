@@ -27,48 +27,12 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func (app *application) about(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-
-	path := strings.Split(r.URL.Path, "/")
-	pathLen := len(path)
-
-	if pathLen == 3 && path[2] == "" {
-		http.Redirect(w, r, "/about", http.StatusFound)
-		return
-	} else if pathLen == 3 && path[2] != "" || pathLen > 3 {
-		app.notFound(w)
-		return
-	}
-	err := renderTemplate(w, "main/about", nil)
-	if err != nil {
-		app.serverError(w, err)
-		return
-	}
-}
-
-func (app *application) aggregate(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Content-Type", "text/html; charset=utf-8")
-
-	p, err := app.loadPosts("html"+strings.TrimSuffix(r.URL.Path, "/"), -1)
-	if err != nil {
-		app.notFound(w)
-	}
-
-	renderTemplate(w, "main/"+strings.TrimPrefix(strings.TrimSuffix(r.URL.Path, "/"), "/"), p)
-}
-
 func (app *application) post(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "text/html; charset=utf-8")
 
 	path := strings.Split(r.URL.Path, "/")
 	if len(path) > 4 {
 		app.notFound(w)
-	} else if r.URL.Path == "/projects" {
-		app.aggregate(w, r)
-	} else if path[2] == "" {
-		http.Redirect(w, r, "/"+path[1], http.StatusFound)
-		return
 	} else if len(path) == 4 && path[3] == "" {
 		http.Redirect(w, r, "/"+path[1]+"/"+path[2], http.StatusFound)
 	} else {
