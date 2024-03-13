@@ -1,3 +1,6 @@
 website
 notes.md
 .DS_Store
+
+/http
+!cmd/http
