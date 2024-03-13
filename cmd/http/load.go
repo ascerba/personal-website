@@ -7,6 +7,7 @@ import (
 	"strings"
 )
 
+// Post struct contains necessary data for a post
 type Post struct {
 	FileName string
 	Title    string
@@ -15,6 +16,7 @@ type Post struct {
 	Image    string
 }
 
+// Posts stuct contains a collection of type Post
 type Posts struct {
 	Contents []*Post
 }
