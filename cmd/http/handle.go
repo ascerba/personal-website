@@ -11,18 +11,15 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 	path := strings.Split(r.URL.Path, "/")
 	if path[1] != "" {
 		app.notFound(w)
-		return
 	} else {
 		p, err := app.aggregate("html/projects")
 		if err != nil {
 			app.serverError(w, err)
-			return
 		}
 
 		err = renderTemplate(w, "index", p)
 		if err != nil {
 			app.serverError(w, err)
-			return
 		}
 	}
 }
@@ -49,7 +46,6 @@ func (app *application) post(w http.ResponseWriter, r *http.Request) {
 		err = renderTemplate(w, path[1]+"/"+path[2], p)
 		if err != nil {
 			app.serverError(w, err)
-			return
 		}
 	}
 }
