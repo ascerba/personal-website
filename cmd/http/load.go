@@ -19,25 +19,8 @@ type Posts struct {
 	Contents []*Post
 }
 
-func (p Post) containsTag(filterTag string) bool {
-	if filterTag == "" {
-		return true
-	}
-
-	for _, tag := range p.Tags {
-		if filterTag == tag {
-			return true
-		}
-	}
-
-	return false
-}
-
-func (app *application) loadPosts(location string, postCount int) (p *Posts, err error) {
-	if postCount == 0 || postCount < -1 {
-		return nil, os.ErrInvalid
-	}
-
+// Read all found files and load them into a stuct
+func (app *application) aggregate(location string) (p *Posts, err error) {
 	var posts []*Post
 
 	files, err := os.ReadDir(location)
@@ -45,17 +28,13 @@ func (app *application) loadPosts(location string, postCount int) (p *Posts, err
 		return nil, err
 	}
 
+	// Loop over every file in the directory and read the contents.
 	for _, file := range files {
 		if !file.IsDir() && strings.HasSuffix(file.Name(), ".tmpl.html") {
 			newPost, err := app.readFile(location + "/" + file.Name())
 			if err != nil {
 				return nil, err
 			}
-			/*
-				// filtering by tag
-				if !newPost.containsTag(filterTag) {
-					continue
-				} */
 
 			posts = append(posts, newPost)
 		}
@@ -65,13 +44,7 @@ func (app *application) loadPosts(location string, postCount int) (p *Posts, err
 		return posts[i].Date > posts[j].Date
 	})
 
-	if postCount == -1 {
-		return &Posts{Contents: posts}, nil
-	} else if postCount < len(posts) {
-		return &Posts{Contents: posts[:postCount]}, nil
-	} else {
-		return &Posts{Contents: posts}, nil
-	}
+	return &Posts{Contents: posts}, nil
 }
 
 func (app *application) readFile(location string) (p *Post, err error) {
@@ -80,7 +53,7 @@ func (app *application) readFile(location string) (p *Post, err error) {
 		return nil, err
 	}
 
-	var tmp *Post = new(Post)
+	var post *Post = new(Post)
 
 	fileName := strings.TrimSuffix(strings.Split(location, "/")[2], ".tmpl.html")
 
@@ -100,32 +73,32 @@ func (app *application) readFile(location string) (p *Post, err error) {
 
 	// tags
 	tagsPattern := regexp.MustCompile(`{{define "keywords"}}([\w\s]+){{end}}`)
-	tagsMatching := tagsPattern.FindStringSubmatch(string(fileContent))
+	matchingTags := tagsPattern.FindStringSubmatch(string(fileContent))
 
 	var tags []string
-	if len(tagsMatching) > 1 {
-		tags = strings.Fields(tagsMatching[1])
+	if len(matchingTags) > 1 {
+		tags = strings.Fields(matchingTags[1])
 	} else {
 		tags = []string{}
 	}
 
 	// thumbnail image
 	imagePattern := regexp.MustCompile(`<img src="(.+)" class="mainImage"( alt="(.+)")* />`)
-	imageMatching := imagePattern.FindStringSubmatch(string(fileContent))
+	matchingImage := imagePattern.FindStringSubmatch(string(fileContent))
 
 	var image string
-	if len(imageMatching) > 1 {
-		image = imageMatching[0]
+	if len(matchingImage) > 1 {
+		image = matchingImage[0]
 	} else {
 		image = ""
 	}
 
-	tmp.FileName = fileName
-	tmp.Title = title
-	tmp.Date = date
-	tmp.Tags = tags
-	tmp.Image = image
+	post.FileName = fileName
+	post.Title = title
+	post.Date = date
+	post.Tags = tags
+	post.Image = image
 
-	return tmp, nil
+	return post, nil
 
 }
