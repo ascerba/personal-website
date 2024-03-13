@@ -31,10 +31,14 @@
     +-- render.go
     +-- errors.go
 \-- html
-    +-- project1.tmpl.html
-    +-- project2.tmpl.html
-    +-- ...
+    +-- master.tmpl.html
+    +-- index.tmpl.html
+    \-- projects
+        +-- project1.tmpl.html
+        +-- project2.tmpl.html
+        +-- ...
 \-- static
+    +-- Resume_Scerba.pdf
     \-- media
         \-- projectN
             \-- hq-main
