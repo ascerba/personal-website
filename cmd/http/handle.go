@@ -13,13 +13,13 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 		app.notFound(w)
 		return
 	} else {
-		p, err := app.loadPosts("html/projects", -1)
+		p, err := app.aggregate("html/projects")
 		if err != nil {
 			app.serverError(w, err)
 			return
 		}
 
-		err = renderTemplate(w, "main/index", p)
+		err = renderTemplate(w, "index", p)
 		if err != nil {
 			app.serverError(w, err)
 			return
