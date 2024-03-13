@@ -31,12 +31,38 @@
     +-- render.go
     +-- errors.go
 \-- html
+    +-- project1.tmpl.html
+    +-- project2.tmpl.html
+    +-- ...
 \-- static
     \-- media
-    \-- fonts
-        \-- <font-folder>
-    +-- style.css
-    +-- favicon.ico
-    +-- logo.svg
-    +-- sitemap.xml
+        \-- projectN
+            \-- hq-main
+                +-- img1.jpg
+                +-- img2.jpg
+                +-- ...
+            \-- sq-main
+                +-- img1_1000.jpg
+                +-- img2_1000.jpg
+                +-- ...
+            \-- lowres-main
+                +-- img1_400.jpg
+                +-- img2_400.jpg
+                +-- ...
+            \-- sq-thumb
+                +-- img1_600.jpg
+                +-- img2_600.jpg
+                +-- ...
+            \-- lowres-thumb
+                +-- img1_200.jpg
+                +-- img2_200.jpg
+                +-- ...
+    \-- assets
+        \-- fonts
+            \-- <font-folder>
+        +-- style.css
+        +-- favicon.ico
+        +-- logo.svg
+        +-- profile-pic.jpg
+        +-- sitemap.xml
 ```
