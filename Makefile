@@ -1,25 +1,26 @@
 .DEFAULT_GOAL := run
 
-bins := ./website
+http_path := ./cmd/http
+bins := ./http
 
 fmt:
-	go fmt .
+	go fmt $(http_path)
 .PHONY:fmt
 
 lint: fmt
-	golint .
+	golint $(http_path)
 .PHONY:lint
 
 vet: lint
-	go vet .
+	go vet $(http_path)
 .PHONY:vet
 
 run: vet
-	go run .
+	go run $(http_path)
 .PHONY:run
 
 build:
-	go build .
+	go build $(http_path)
 .PHONY:build
 
 clean:
