@@ -137,12 +137,21 @@ b {
 	/*background-color: rgb(240,240,240);*/
 }
 
-img {
+/* img {
     max-width: 100%;
     height: auto;
     vertical-align: middle;
     font-style: italic;
     shape-margin: 1rem;
+} */
+
+img, video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  font-style: italic;
+/*   color: rgb(177, 177, 177);
+  background-color: rgb(73, 73, 73); */
 }
 
 .thumbnail img {
@@ -199,6 +208,10 @@ a:hover:not(.thumbnail) {
 
 .projectContent p {
   margin-left: 1.5rem;
+}
+
+.hide {
+  display: none;
 }
 
 .footer-logo {
