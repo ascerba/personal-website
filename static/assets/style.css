@@ -154,6 +154,12 @@ img, video {
   background-color: rgb(73, 73, 73); */
 }
 
+iframe {
+  max-width: 100%;
+  aspect-ratio: 16/9;
+  display: block;
+}
+
 .thumbnail img {
   width: fit-content;
   aspect-ratio: 4/3;
