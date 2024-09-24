@@ -63,6 +63,7 @@ header {
     padding: 1rem;
     background-color: white;
     border-bottom: 0.1rem solid black;
+    z-index: 100;
 }
 
 .logo-w-name {
@@ -311,7 +312,7 @@ blockquote {
     /* ALWAYS KEEPING THE TOGGLER OR THE CHECKBOX ON TOP OF EVERYTHING :  */
       visibility: visible;
       display: block;
-      z-index: 4;
+      z-index: 104;
       height: 60px;
       width: 60px;
       position: fixed;
@@ -323,7 +324,7 @@ blockquote {
     }
 
     .hamburger{
-      z-index: 3;
+      z-index: 103;
       position: fixed;
       top: 0;
       right: 1rem;
@@ -399,7 +400,7 @@ blockquote {
       position: fixed;
       top: 0;
       right: 0;
-      z-index: 2;
+      z-index: 102;
       background-color: white;
       padding: 6rem 2rem 1rem 2rem;
       align-items: center;
