@@ -85,12 +85,12 @@ func (app *application) readFile(location string) (p *Post, err error) {
 	}
 
 	// thumbnail image
-	imagePattern := regexp.MustCompile(`<img src="(.+)" class="mainImage"( alt="(.+)")* />`)
+	imagePattern := regexp.MustCompile(`{{define "thumbnail"}}<img src="(.+)" class="mainImage"( alt="(.+)")* />{{end}}`)
 	matchingImage := imagePattern.FindStringSubmatch(string(fileContent))
 
 	var image string
 	if len(matchingImage) > 1 {
-		image = matchingImage[0]
+		image = strings.Trim(matchingImage[0], "{{define \"thumbnail\"}}")
 	} else {
 		image = ""
 	}

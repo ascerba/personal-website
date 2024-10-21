@@ -172,6 +172,15 @@ iframe {
 
 .thumbnail {
 	position: relative;
+  aspect-ratio: 4/3;
+}
+
+.empty-thumbnail {
+  aspect-ratio: 4/3;
+}
+
+.projectContent .main-image {
+  display: none;
 }
 
 .title {
@@ -181,7 +190,7 @@ iframe {
 	position: absolute;
 	top: 0;
 	left: 0;
-	padding: 8rem 1rem;
+	padding: 9rem 1rem 0 1rem;
 	text-align: center;
 	font-weight: bold;
 	color: white;
@@ -272,6 +281,9 @@ blockquote {
   .side-info img {
     display: block;
     margin: auto;
+  }
+  .empty-thumbnail {
+    display: none;
   }
 }
 
